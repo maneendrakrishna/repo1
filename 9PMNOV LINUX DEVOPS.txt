@@ -1,0 +1,162 @@
+COMMANDS:
+
+By default ec2 user is the user for login
+but in linux root is the main user
+
+sudo -i		: to switch from ec2-user to root
+whoami		: to show current user
+who		: to show users login info
+uname -a	: to show os information
+date		: to show date time and info
+hostname	: to show the hostname of server
+hostnamectl set-hostname raham: to set our hostname
+uptime		: to show server runninng time
+cal		: to show calender 
+exit		: to logout of user
+
+===============================================================================
+DAY-02 -- > 30-11-2023
+
+FILE COMMANDS:
+
+touch filename	: to create a file
+ls / ll		: to list the files
+cat filename	: to show the content inside a file
+more filename	: to show the content inside a file
+cat>>filename	: to insert the content inside a file
+enter ctrl d	: to save and exit from file
+clear / ctrl l	: to clear the screen
+cp file1 file2	: to copy content from file1 to file2
+cat file1 >> file2      : to copy the contents of file1 to file 2 without 
+                                  earasing the data in file2.
+mv file1 file2	: to rename a file from file1 to file2
+rm filename	: to remove a file
+rm filename -f	: to remove a file forcefully
+rm * -f		: to remove all files at a time 
+
+head filename	: to show top 10 lines of a file
+head -5 filename: to show top 5 lines of a file
+head -13 filename: to show top 13 lines of a file
+tail filename	: to show bottom 10 lines of a file
+tail -5 filename: to show bottom 5 lines of a file
+tail -13 filename: to show bottom 13 lines of a file
+sed -n '5,15p' filename: to print lines from 5 to 15
+cat -n filename	: to print the line numbers 
+wc filename	: to print lines, words and charcters
+touch file{1..10}: to create 10 files at a time
+rm -f file{3..6}: to delete from file3 to file6
+rm -f p*	: to delete files with starting p
+
+==========================================================
+
+EDITORS: used to edit and insert the content.
+Types:
+1. Vim/vi
+2. Nano
+
+i	: to insert/modify/edit content
+esc	: to exit from insert mode
+
+In Vim editor we have totally 3 modes
+
+1. COMMAND MODE
+2. INSERT MODE
+3. SAVE MODE
+
+SAVE MODE:
+:w	: to save
+:q	: to quit
+:wq	: to save and quit
+:wq!	: to save and quit forcefully
+
+INSERT MODE:
+i	: to insert/modify/edit content
+I/0	: starting of line
+A/$	: end of line
+O	: Create new line above existing
+o	: Create new line below existing
+
+COMMAND MODE:
+gg	: top of file
+shift g	: end of file
+yy	: to copy a single line
+4yy	: to copy four lines
+p	: to paste single time
+4p	: to paste four times
+dd	: to delete a single line
+4dd	: to delete four lines
+u	: undo
+ctrl r	: redo
+11gg	: to go for 11 th line
+:11	: to go for 11 th line
+:set number: to show line numbers
+/word	: to search for a word
+
+GREP: GLOBAL REGULAR EXPRESSION PRINT
+To search for particular words
+
+grep word filename	: to search for word in file
+grep word filename -i	: i == > to avoid case sensitive
+grep word filename -iv	: v == > to avoid lines that contains word
+grep 'word1\|word2' file: to search for multiple words
+grep word file -c	: to print number of lines that word have
+
+SED: STREAM EDITOR
+used to replace words in a file
+
+sed 's/word1/word2/g' filename -i   : to replace word1 with word2
+sed 's/word1/word2/gI' filename	-i  : I == > to avoid case senstitive
+sed '4c content' filename -i	    : to replace a complete line
+sed 's/word1/word2/gI; s/word3/word4/gI' file1 -i : to replace multiple words
+sed '2d' filename -i		    : to delete line number 2
+	
+
+==============================================================================
+USERS & GROUPS:
+
+we create USER for logging and working with the servers.
+
+cat /etc/passwd
+
+useradd raham		: to create a user raham
+cat /etc/passwd		: to list users
+getent passwd		: to list users
+passwd raham		: to set password for raham
+su - raham		: to login as raham user
+cat /etc/group		: to list groups
+getent group		: to list groups
+groupadd devops		: to create devops group
+id raham		: to show ids
+userdel raham		: to delete user
+groupdel devops		: to delete group
+cat /etc/shadow		: to show password
+
+NOTE:
+username cant be password
+password must be min 8 char
+password cant be visible
+
+To give full permission for a user we need to add him to visudo file
+visudo -- > :100 -- > yy & p -- > root=raham -- > :wq
+su - raham 
+sudo yum install git -y
+
+
+chown raham:raham file1 : to attach user and group for a file
+only user: chown raham file2
+only group: chgrp raham file2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
